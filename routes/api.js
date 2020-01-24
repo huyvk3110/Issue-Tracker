@@ -19,7 +19,7 @@ module.exports = function (app, db) {
       const { project } = req.params;
       const { created_on, updated_on, open, _id, issue_title, issue_text, created_by, assigned_to, status_text, username } = req.query;
 
-      const query = { created_on, updated_on, open, _id: _id ? new ObjectID(_id) : undefined, issue_title, issue_text, created_by, assigned_to, status_text, username };
+      const query = { created_on, updated_on, open, _id: _id ? new ObjectId(_id) : undefined, issue_title, issue_text, created_by, assigned_to, status_text, username };
       for (const key in query) if (!query[key]) delete query[key];
 
       db.collection(project).findOne(query)
